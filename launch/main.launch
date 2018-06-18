@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+  <node pkg="image_saver" type="image_saver" name="image_saver" output="screen">
+
+    <!-- att_topic: Name of the topic publishing attitude data for this quad -->
+    <param name="att_topic" value="/gryphon/Attitude2D"/>
+
+    <!-- pos_topic: Name of the topic publishing position data for this quad -->
+    <param name="pos_topic" value="/gryphon/SingleBaselineRTK"/>
+
+    </node>
+</launch>
