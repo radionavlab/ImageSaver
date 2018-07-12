@@ -10,6 +10,7 @@ class Node {
 public:
     Node(int argc, char** argv);
     void Start();
+    void Stop();
 
 private:
     std::shared_ptr<ros::NodeHandle> nh_;

@@ -6,7 +6,7 @@
 namespace image_saver {
 
 Node::Node(int argc, char** argv) {
-    ros::init(argc, argv, "image_saver", ros::init_options::AnonymousName);
+    ros::init(argc, argv, "image_saver", ros::init_options::AnonymousName | ros::init_options::NoSigintHandler);
     this->nh_ = std::make_shared<ros::NodeHandle>("~");
     
     std::string pos_topic, att_topic;
@@ -23,5 +23,9 @@ void Node::Start() {
         ros::spinOnce();
         r.sleep();
     }
+}
+
+void Node::Stop() {
+    ros::shutdown();
 }
 }; // namespace image_saver

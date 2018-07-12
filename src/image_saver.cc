@@ -43,7 +43,7 @@ std::string ImageSaver::NextImageFileName() {
     static int seq = 0;
     std::stringstream ss;
     ss << std::setw(5) << std::setfill('0') << seq++;
-    std::string filename = "frame" + ss.str() + ".nv12";
+    std::string filename = "frame" + ss.str() + ".yuv";
     return filename;
 }
 
@@ -96,7 +96,7 @@ void ImageSaver::SaveImage(const quadcam::FrameData& frame_data) {
     this->WriteTextLine(filename);
 
     // Write image data to disk
-    std::ios_base::sync_with_stdio(false);
+    // std::ios_base::sync_with_stdio(false);
     std::fstream img_file(this->save_directory_path_ + "/" + filename, std::ios::out | std::ios::binary);
     img_file.write((char*)frame_data.data.get(), frame_data.meta_data.data_size);
     img_file.close();
