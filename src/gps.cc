@@ -35,7 +35,8 @@ void AttitudeMessageHandler(const mg_msgs::Attitude2D msg) {
 
     // Copy the covariance
     constexpr size_t FLOAT_SIZE = sizeof(float);
-    memcpy(gps_solution.attCov, P.data(), nCov * FLOAT_SIZE);
+    static uint32_t NUM_COV = (nCov*(nCov+1))/2;
+    memcpy(gps_solution.attCov, P.data(), NUM_COV * FLOAT_SIZE);
 }
 
 void PositionMessageHandler(const mg_msgs::SingleBaselineRTK msg) {
@@ -64,5 +65,6 @@ void PositionMessageHandler(const mg_msgs::SingleBaselineRTK msg) {
 
     // Copy the covariance
     constexpr size_t FLOAT_SIZE = sizeof(float);
-    memcpy(gps_solution.posCov, P.data(), nCov * FLOAT_SIZE);
+    static uint32_t NUM_COV = (nCov*(nCov+1))/2;
+    memcpy(gps_solution.posCov, P.data(), NUM_COV * FLOAT_SIZE);
 }
