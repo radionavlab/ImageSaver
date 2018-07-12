@@ -20,10 +20,15 @@ ImageSaver::ImageSaver(const std::string& save_directory_path,
     this->text_file_path_ = this->save_directory_path_ + "/" + this->text_file_name_;
 }
 
+void ImageSaver::Stop() {
+    this->stopped_ = true;
+}
+
 void ImageSaver::Start() {
     quadcam::CameraClient client(this->camera_server_path_);
 
-    while(true) {
+    this->stopped_ = false;
+    while(!this->stopped_) {
         quadcam::FrameData frame_data = client.RequestFrame();
         this->SaveImage(frame_data);
     }

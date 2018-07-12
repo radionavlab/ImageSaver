@@ -11,6 +11,7 @@ public:
                const std::string& text_file_name,
                const std::string& camera_server_path);
     void Start();
+    void Stop();
 
 private:
 
@@ -18,6 +19,7 @@ private:
     std::string text_file_name_;
     std::string camera_server_path_;
     std::string text_file_path_;
+    bool stopped_{false};
 
     void MakeSaveDirectory();
     void SaveImage(const quadcam::FrameData& frame_data); 

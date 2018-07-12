@@ -8,10 +8,10 @@
 #include "node.h"
 #include "image_saver.h"
 
-bool OK{true};
+image_saver::ImageSaver* is;
 
 void SigHandler(int s) {
-    OK = false;
+    is->Stop();
 }
 
 void ConfigureSigHandler() {
@@ -34,12 +34,10 @@ int main(int argc, char **argv) {
     ConfigureSigHandler();
 
     image_saver::Node node(argc, argv);
-    image_saver::ImageSaver is(save_directory_path, text_file_name, camera_server_path);
+    is = new image_saver::ImageSaver(save_directory_path, text_file_name, camera_server_path);
 
     // node.Start();
-    is.Start();
-
-    // while(OK && sleep(1) == 0);
+    is->Start();
     return EXIT_SUCCESS;
 }
 
