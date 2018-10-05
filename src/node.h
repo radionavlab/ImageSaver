@@ -1,5 +1,6 @@
 // Author: Tucker Haydon
-#pragma once
+#ifndef IMAGE_SAVER_NODE_H
+#define IMAGE_SAVER_NODE_H
 
 #include <memory>
 #include <ros/ros.h>
@@ -14,8 +15,9 @@ public:
 
 private:
     std::shared_ptr<ros::NodeHandle> nh_;
-    ros::Subscriber att_sub_;
-    ros::Subscriber pos_sub_;
+    ros::Subscriber odometry_sub_;
 };
 
 }; // namespace image_saver
+
+#endif
