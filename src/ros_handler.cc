@@ -3,7 +3,7 @@
 #include "buffer.h"
 
 // Extern Variable
-OdometryBuffer odometry_buffer;
+// OdometryBuffer odometry_buffer;
 
 namespace image_saver {
   

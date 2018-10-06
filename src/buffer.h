@@ -4,6 +4,7 @@
 
 #include <mutex>
 #include <nav_msgs/Odometry.h>
+#include <iostream>
 
 class OdometryBuffer {
   private:
@@ -15,6 +16,7 @@ class OdometryBuffer {
 
     nav_msgs::Odometry GetOdometryMsg() {
       std::lock_guard<std::mutex> guard(OdometryBuffer::mtx_);
+      std::cout << this->odometry_.pose.pose.position.x << std::endl;
       return odometry_; 
     };
 

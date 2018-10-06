@@ -7,7 +7,7 @@
 #include "buffer.h"
 
 // Extern Variable
-OdometryBuffer odometry_buffer;
+// OdometryBuffer odometry_buffer;
 
 namespace image_saver {
 
@@ -38,6 +38,7 @@ namespace image_saver {
   void MetadataLogger::LogMetadata(const std::string& row_name) {
     // Copy most recent pose estimate
     nav_msgs::Odometry odom = odometry_buffer.GetOdometryMsg();
+    std::cout << odom.pose.pose.position.x << std::endl << std::endl;
 
     // Write row name
     *(this->output_file_ptr_) << row_name << " ";

@@ -44,7 +44,7 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME} src/main.cc src/image_saver.cc
-  src/metadata_logger.cc src/ros_handler.cc src/node.cc)
+  src/metadata_logger.cc src/ros_handler.cc src/node.cc src/buffer.cc)
 
 
 ## Add cmake target dependencies of the executable
