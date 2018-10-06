@@ -14,7 +14,8 @@ set(CAMERA_CLIENT_LIBS "/usr/local/lib/quadcam/libcamera_client.a")
 find_package(catkin REQUIRED 
     COMPONENTS
     roscpp
-    mg_msgs
+    message_generation
+    nav_msgs
 )
 
 
@@ -30,7 +31,7 @@ find_package(catkin REQUIRED
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES image_saver
-    CATKIN_DEPENDS mg_msgs
+    CATKIN_DEPENDS nav_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -42,7 +43,8 @@ include_directories(
 # ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(${PROJECT_NAME} src/main.cc src/node.cc src/gps.cc src/image_saver.cc)
+add_executable(${PROJECT_NAME} src/main.cc src/image_saver.cc
+  src/metadata_logger.cc src/ros_handler.cc src/node.cc)
 
 
 ## Add cmake target dependencies of the executable
@@ -55,4 +57,4 @@ target_link_libraries(${PROJECT_NAME}
   ${CAMERA_CLIENT_LIBS}
 )
 
-add_dependencies(${PROJECT_NAME} mg_msgs_gencpp)
+add_dependencies(${PROJECT_NAME} nav_msgs_gencpp nav_msgs_generate_messages_cpp)
