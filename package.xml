@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="1">
-  <name>image_saver</name>
+  <name>ImageSaver</name>
   <version>0.0.0</version>
-  <description>The image_saver package</description>
+  <description>The ImageSaver package</description>
 
   <maintainer email="thaydon@utexas.edu">Tucker Haydon</maintainer>
 
